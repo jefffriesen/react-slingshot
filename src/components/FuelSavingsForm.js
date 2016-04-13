@@ -20,26 +20,26 @@ const FuelSavingsForm = ({saveFuelSavings, calculateFuelSavings, appState}) => {
       <table>
         <tbody>
         <tr>
-          <td><label htmlFor="newMpg">New Vehicle km/L</label></td>
+          <td><label htmlFor="newMpg">New Vehicle MPG</label></td>
 
           {/* dispatch calculateFuelSavings onChange */}
           {/* value of input is pulled from appState datastore */}
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="newMpg" value={appState.newMpg}/></td>
         </tr>
         <tr>
-          <td><label htmlFor="tradeMpg">Trade-in km/L</label></td>
+          <td><label htmlFor="tradeMpg">Trade-in MPG</label></td>
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="tradeMpg" value={appState.tradeMpg}/></td>
         </tr>
         <tr>
-          <td><label htmlFor="newPpg">New Vehicle price per liter</label></td>
+          <td><label htmlFor="newPpg">New Vehicle gas price per gallon</label></td>
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="newPpg" value={appState.newPpg}/></td>
         </tr>
         <tr>
-          <td><label htmlFor="tradePpg">Trade-in price per liter</label></td>
+          <td><label htmlFor="tradePpg">Trade-in price gas per gallon</label></td>
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="tradePpg" value={appState.tradePpg}/></td>
         </tr>
         <tr>
-          <td><label htmlFor="milesDriven">Kilometers Driven</label></td>
+          <td><label htmlFor="milesDriven">Miles Driven</label></td>
           <td>
             <FuelSavingsTextInput onChange={fuelSavingsKeypress} name="milesDriven" value={appState.milesDriven}/> miles
             per &nbsp;
