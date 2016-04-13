@@ -1,6 +1,8 @@
 import {SAVE_FUEL_SAVINGS, CALCULATE_FUEL_SAVINGS} from '../constants/actionTypes';
 import calculator from '../businessLogic/fuelSavingsCalculator';
 import dateHelper from '../businessLogic/dateHelper';
+
+// Polyfill for Object.assign()
 import objectAssign from 'object-assign';
 
 const initialState = {
@@ -36,6 +38,7 @@ export default function fuelSavingsAppState(state = initialState, action) {
     { // limit scope with this code block, to satisfy eslint no-case-declarations rule.
       let newState = objectAssign({}, state);
       newState[action.fieldName] = action.value;
+
       let calc = calculator();
       newState.necessaryDataIsProvidedToCalculateSavings = calc.necessaryDataIsProvidedToCalculateSavings(newState);
       newState.dateModified = dateHelper.getFormattedDateTime(new Date());
@@ -43,7 +46,7 @@ export default function fuelSavingsAppState(state = initialState, action) {
       if (newState.necessaryDataIsProvidedToCalculateSavings) {
         newState.savings = calc.calculateSavings(newState);
       }
-
+      // debugger
       return newState;
     }
 

@@ -2,42 +2,47 @@ import React, {PropTypes} from 'react';
 import FuelSavingsResults from './FuelSavingsResults';
 import FuelSavingsTextInput from './FuelSavingsTextInput';
 
-// Destrucuring props for brevity below.
+// app state and dispatch functions passed in as props using
+// mapStateToProps and mapDispatchToProps
 const FuelSavingsForm = ({saveFuelSavings, calculateFuelSavings, appState}) => {
-  const onTimeframeChange = function (e) {
+
+  const onTimeframeChange = (e) => {
     calculateFuelSavings(appState, 'milesDrivenTimeframe', e.target.value);
   };
 
-  const fuelSavingsKeypress = function (name, value) {
+  const fuelSavingsKeypress = (name, value) => {
     calculateFuelSavings(appState, name, value);
   };
 
   return (
-    <div>
+    <div style={{marginLeft: 20}}>
       <h2>Fuel Savings Analysis</h2>
       <table>
         <tbody>
         <tr>
-          <td><label htmlFor="newMpg">New Vehicle MPG</label></td>
+          <td><label htmlFor="newMpg">New Vehicle km/L</label></td>
+
+          {/* dispatch calculateFuelSavings onChange */}
+          {/* value of input is pulled from appState datastore */}
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="newMpg" value={appState.newMpg}/></td>
         </tr>
         <tr>
-          <td><label htmlFor="tradeMpg">Trade-in MPG</label></td>
+          <td><label htmlFor="tradeMpg">Trade-in km/L</label></td>
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="tradeMpg" value={appState.tradeMpg}/></td>
         </tr>
         <tr>
-          <td><label htmlFor="newPpg">New Vehicle price per gallon</label></td>
+          <td><label htmlFor="newPpg">New Vehicle price per liter</label></td>
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="newPpg" value={appState.newPpg}/></td>
         </tr>
         <tr>
-          <td><label htmlFor="tradePpg">Trade-in price per gallon</label></td>
+          <td><label htmlFor="tradePpg">Trade-in price per liter</label></td>
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="tradePpg" value={appState.tradePpg}/></td>
         </tr>
         <tr>
-          <td><label htmlFor="milesDriven">Miles Driven</label></td>
+          <td><label htmlFor="milesDriven">Kilometers Driven</label></td>
           <td>
             <FuelSavingsTextInput onChange={fuelSavingsKeypress} name="milesDriven" value={appState.milesDriven}/> miles
-            per
+            per &nbsp;
             <select name="milesDrivenTimeframe" onChange={onTimeframeChange} value={appState.milesDrivenTimeframe}>
               <option value="week">Week</option>
               <option value="month">Month</option>
@@ -55,6 +60,8 @@ const FuelSavingsForm = ({saveFuelSavings, calculateFuelSavings, appState}) => {
       <hr/>
 
       {appState.necessaryDataIsProvidedToCalculateSavings && <FuelSavingsResults savings={appState.savings}/>}
+
+      {/* Dispatch saveFuelSavings action onClick */}
       <input type="submit" value="Save" onClick={() => saveFuelSavings(appState)}/>
     </div>
   );
