@@ -1,6 +1,6 @@
-Forked and slightly modified for a React meetup in Ahmedebad, India. This likely won't stay as up-to-date as the original: https://github.com/coryhouse/react-slingshot
+Forked and slightly modified for a [React meetup in Ahmedebad, India](http://www.meetup.com/Ahmedabad-ReactJS-Meetup/events/230242758/). This likely won't stay as up-to-date as the original repo so you may want to head over there to get the latest: https://github.com/coryhouse/react-slingshot
 
-But there are some diagrams in the demo folder that maybe useful. Feel free to fork this and make it your own, or even contribute back to it.
+But there are some diagrams in the demo folder that maybe useful. Feel free to fork this and make it your own, or even contribute back to it. Sources and reference material for the meetup: https://github.com/franceindia/React-Ahmedabad-Meetup
 
 # React Slingshot!
 
